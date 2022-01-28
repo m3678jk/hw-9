@@ -22,7 +22,7 @@ public class ReaderData {
     }
 
     public void setPathToNewFile(String pathToNewFile) {
-        this.pathToFile = pathToNewFile;
+        this.pathToNewFile = pathToNewFile;
     }
 
     public String getPathToNewFile() {
