@@ -103,7 +103,7 @@ public class ReaderData {
 
 
     public void saverDataInFile() {
-        file = new File("C:\\Java\\jm\\ReaderSaver\\src\\main\\java\\TaskTwo\\user.json");
+        file = new File(getPathToNewFile());
         fw = null;
         String str = converter();
         try {
@@ -128,6 +128,7 @@ class ReaderDataTester {
     public static void main(String[] args) {
         ReaderData reader = new ReaderData();
         reader.setPathToFile("C:\\Java\\jm\\ReaderSaver\\src\\main\\java\\TaskTwo\\file.txt");
+        reader.setPathToNewFile("C:\\Java\\jm\\ReaderSaver\\src\\main\\java\\TaskTwo\\user.json");
 //        System.out.println(reader.readAllLinesToString());
 //        System.out.println(reader.toList());
         System.out.println(reader.converter());
