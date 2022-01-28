@@ -102,24 +102,24 @@ public class ReaderData {
     }
 
 
-        public void saverDataInFile() {
-            file = new File ("C:\\Java\\jm\\ReaderSaver\\src\\main\\java\\TaskTwo\\user.json");
-            fw = null;
-            String str = converter();
+    public void saverDataInFile() {
+        file = new File("C:\\Java\\jm\\ReaderSaver\\src\\main\\java\\TaskTwo\\user.json");
+        fw = null;
+        String str = converter();
+        try {
+            fw = new FileWriter(file, true);
+            fw.write(str);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
             try {
-                fw = new FileWriter(file,true);
-                fw.write(str);
+                fw.close();
             } catch (IOException e) {
                 e.printStackTrace();
-            } finally {
-                try {
-                    fw.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
-
         }
+
+    }
 
 }
 
