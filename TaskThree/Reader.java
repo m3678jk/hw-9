@@ -2,6 +2,7 @@ package TaskThree;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Stream;
 
 public class Reader {
 
@@ -48,26 +49,34 @@ public class Reader {
     public void countWords() {
 
         String str = readAllLines();
+
         HashSet<String> hList = new HashSet<String>(toArrayList());
         List<String> arrList = new ArrayList<String>(hList);
-        List<String> result = new ArrayList<String>();
+        List<List<String>> result = new ArrayList<>();
         int count = 0;
         for (String value : arrList) {
-            for (String el : toArrayList()){
+            for (String el : toArrayList()) {
                 if (el.equals(value)) {
                     count++;
                 }
-
-                }
-            result.add(value + " " + count);
+            }
+            result.add(Arrays.asList(String.valueOf(count), value, value + " " + count));
             count = 0;
         }
+        // System.out.println(result);
+        Collections.sort(result, new Comparator<List<String>>() {
 
-        //Collections.reverse(result);
+            @Override
+            public int compare(List<String> o1, List<String> o2) {
+                return o1.get(0).compareTo(o2.get(0));
+            }
+        });
 
-
-        for (String s : result) {
-            System.out.println(s);
+        //System.out.println(result);
+        Collections.reverse(result);
+        //System.out.println(result);
+        for (List<String> strings : result) {
+            System.out.println(strings.get(2));
         }
     }
 }
