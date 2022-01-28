@@ -53,12 +53,17 @@ public class Reader {
         List<String> result = new ArrayList<String>();
         int count = 0;
         for (String value : arrList) {
-            if (str.contains(value)) {
-                count++;
-                result.add(value + " " + count);
-            }
+            for (String el : toArrayList()){
+                if (el.equals(value)) {
+                    count++;
+                }
+
+                }
+            result.add(value + " " + count);
+            count = 0;
         }
-        Collections.reverse(result);
+
+        //Collections.reverse(result);
 
 
         for (String s : result) {
