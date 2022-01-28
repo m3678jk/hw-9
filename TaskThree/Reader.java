@@ -26,7 +26,7 @@ public class Reader {
         }
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(getPathToFile()))) {
             for (String line; (line = bufferedReader.readLine()) != null; ) {
-                sb.append(line + " ");
+                sb.append(line).append(" ");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -41,8 +41,8 @@ public class Reader {
     }
 
     public List<String> toArrayList() {
-        List<String> arrayOfWords = Arrays.asList(readAllLines().split(" "));
-        return arrayOfWords;
+        List<String> list = Arrays.asList(readAllLines().replaceAll("\\s+", " ").split(" "));
+        return list;
     }
 
     public void countWords() {
