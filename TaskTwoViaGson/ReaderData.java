@@ -79,17 +79,15 @@ public class ReaderData {
         return result + sb;
     }
 
-
-
-    public List<Object> getBenchOfData(){
+    public List<Object> getBenchOfData() {
         List<Object> personalData = new ArrayList<Object>();
 
 
-        for (int i = 0 ;  i < readAllLines().size(); i++){
-           List<String> arrayFromLine = Arrays.asList(readAllLines().get(i).split(" "));
-           personalData.add(new Person(arrayFromLine.get(0), arrayFromLine.get(1)));
-       }
-        personalData.remove(0);
+        for (int i = 1; i < readAllLines().size(); i++) {
+            List<String> arrayFromLine = Arrays.asList(readAllLines().get(i).split(" "));
+            personalData.add(new Person(arrayFromLine.get(0), Integer.parseInt(arrayFromLine.get(1))));
+        }
+
         return personalData;
     }
 
@@ -98,7 +96,7 @@ public class ReaderData {
         file = new File(getPathToNewFile());
         fw = null;
         Gson conv = new GsonBuilder().setPrettyPrinting().create();
-        String str =  conv.toJson(getBenchOfData());
+        String str = conv.toJson(getBenchOfData());
         try {
             fw = new FileWriter(file, true);
             fw.write(str);
@@ -116,26 +114,27 @@ public class ReaderData {
 
 }
 
-class Person{
+class Person {
     private String name;
-    private String age;
+    private int age;
 
     public String getName() {
         return name;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
     public void setName(String name) {
         this.name = name;
     }
-    Person(String name, String age){
+
+    Person(String name, int age) {
         this.name = name;
         this.age = age;
     }
@@ -147,6 +146,8 @@ class ReaderDataTester {
         reader.setPathToFile("C:\\Java\\jm\\ReaderSaver\\src\\main\\java\\TaskTwoViaGson\\file.txt");
         reader.setPathToNewFile("C:\\Java\\jm\\ReaderSaver\\src\\main\\java\\TaskTwoViaGson\\user.json");
         reader.saverDataInFile();
+
+
 
 
     }
